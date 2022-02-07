@@ -6,3 +6,4 @@
 #define LABA_5B_VECTOR_H
 
 #endif //LABA_5B_VECTOR_H
+
