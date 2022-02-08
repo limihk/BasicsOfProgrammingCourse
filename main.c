@@ -1,10 +1,17 @@
-#include "libs/algorithms/algorithms.c"
-#include "libs/data_structures/vector/vector.c"
+#include "libs/data_structures/vector/vector.h"
 #include <stdio.h>
+#include <malloc.h>
+
+
+int main(){
 
 
 
-int main() {
+
+
+
+
+
 
 
     return 0;
