@@ -48,3 +48,7 @@ void clear(vector *v) {
 void shrinkToFit(vector *v) {
     reserve(v, v->size);
 }
+
+void deleteVector(vector *v) {
+    reserve(v, 0);
+}
