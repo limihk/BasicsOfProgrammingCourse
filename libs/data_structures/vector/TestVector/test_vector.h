@@ -16,5 +16,6 @@ void test_atVector_requestToLastElement();
 void test_back_oneElementInVector();
 //Тест 7
 void test_front_oneElementInVector();
-
+//обьединяем тесты
+void test();
 #endif
