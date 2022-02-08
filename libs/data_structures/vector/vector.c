@@ -1,6 +1,8 @@
 #include "vector.h"
 #include <malloc.h>
 #include <assert.h>
+#include <stdio.h>
+#include <stdbool.h>
 
 void badAlloc() {
     fprintf(stderr, "bad alloc");
@@ -28,7 +30,7 @@ vector createVector(const size_t capacity) {
     return (vector) {data, 0, capacity};
 }
 
-void reserve(vector *v, const size_t newCapacity) {
+void reserve(vector *v,  size_t newCapacity) {
     v->capacity = newCapacity;
     if (v->capacity < v->size)
         v->size = v->capacity;
@@ -51,4 +53,35 @@ void shrinkToFit(vector *v) {
 
 void deleteVector(vector *v) {
     reserve(v, 0);
+}
+
+bool isEmptyVector(vector *v) {
+    return v->size == 0;
+}
+bool isZeroVector(vector *v){
+    return v->capacity == 0;
+}
+
+bool isFullVector(vector *v){
+    return v->size == v->capacity;
+}
+
+int getVectorValue(vector *v, size_t i){
+    return v->data[i];
+}
+
+void pushBack(vector *v, const int x) {
+    if (isFullVector(v) && !isZeroVector(v))
+        reserve(v, v->size * 2);
+    else if (isZeroVector(v))
+        reserve(v, 1);
+
+    v->data[v->size++] = x;
+}
+
+void popBack(vector *v) {
+    if (isEmptyVector(v))
+        emptyVector();
+
+    v->size--;
 }
