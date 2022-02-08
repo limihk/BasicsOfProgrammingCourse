@@ -1,6 +1,7 @@
 
 #ifndef LABA_5B_VECTOR_H
 #define LABA_5B_VECTOR_H
+
 #include <stdio.h>
 #include "../../algorithms/array/array.h"
 #include <stdbool.h>
@@ -12,7 +13,6 @@ typedef struct vector {
 
 
 } vector;
-
 
 
 //возвращает структуру-дескриптор вектор из n значений.
@@ -53,6 +53,15 @@ void pushBack(vector *v, int x);
 
 //удаляет последний элемент из вектора v.
 void popBack(vector *v);
+
+//возвращает указатель на index-ый элемент вектора
+int* atVector(vector *v, size_t index);
+
+//возвращает указатель на последний элемент
+int* back(vector *v);
+
+//Возвращает указатель на первый элемент
+int* front(vector *v);
 
 
 #endif //LABA_5B_VECTOR_H

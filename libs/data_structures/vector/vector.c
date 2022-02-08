@@ -19,7 +19,7 @@ void badIndex(const size_t index) {
     exit(1);
 }
 
-vector createVector(const size_t capacity) {
+vector createVector(size_t capacity) {
     int *data = NULL;
     if (capacity > 0) {
         data = (int *) malloc(sizeof(int) * capacity);
@@ -30,7 +30,7 @@ vector createVector(const size_t capacity) {
     return (vector) {data, 0, capacity};
 }
 
-void reserve(vector *v,  size_t newCapacity) {
+void reserve(vector *v, size_t newCapacity) {
     v->capacity = newCapacity;
     if (v->capacity < v->size)
         v->size = v->capacity;
@@ -58,19 +58,20 @@ void deleteVector(vector *v) {
 bool isEmptyVector(vector *v) {
     return v->size == 0;
 }
-bool isZeroVector(vector *v){
+
+bool isZeroVector(vector *v) {
     return v->capacity == 0;
 }
 
-bool isFullVector(vector *v){
+bool isFullVector(vector *v) {
     return v->size == v->capacity;
 }
 
-int getVectorValue(vector *v, size_t i){
+int getVectorValue(vector *v, size_t i) {
     return v->data[i];
 }
 
-void pushBack(vector *v, const int x) {
+void pushBack(vector *v, int x) {
     if (isFullVector(v) && !isZeroVector(v))
         reserve(v, v->size * 2);
     else if (isZeroVector(v))
@@ -84,4 +85,20 @@ void popBack(vector *v) {
         emptyVector();
 
     v->size--;
+}
+
+int* atVector(vector *v,  size_t index) {
+    if (index >= v->size) {
+        badIndex(index);
+    }
+    return &v->data[index];
+
+}
+
+int* back(vector *v) {
+    return atVector(v, v->size - 1);
+}
+
+int* front(vector *v) {
+    atVector(v, 0);
 }
